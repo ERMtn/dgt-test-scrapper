@@ -34,7 +34,7 @@ def extract():
         time.sleep(0.1)
         driver.execute_script('finalizarExamen()')
         time.sleep(0.1)
-        repetidas = 0
+        repeats = 0
         for i in range(30):
             q = driver.find_element(By.ID,'textoPreguntaElem').text
             try: img = driver.find_element(By.XPATH, "//img[@id='imgPreguntaElem' and not(contains(@src,'ImagenBlanca'))]").get_attribute('src')
@@ -46,10 +46,10 @@ def extract():
             if not any([True for elem in solved if q in elem.values()]):
                 solved.append({'question': q, 'img': img, 'options': opts, 'solution': a})
             else:
-                repetidas += 1
+                repeats += 1
                 print(' Skip ', end='')
 
-            if repetidas > 10:
+            if repeats > 10:
                 allRepeated += 1
                 break;
             driver.execute_script('preguntaSiguiente()')

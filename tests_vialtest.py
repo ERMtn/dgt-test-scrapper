@@ -42,7 +42,7 @@ def fillTest():
 def extractAnswers():
     preguntas = driver.find_elements(By.XPATH, "//div[contains(@id, 'quest_')]")
     driver.find_element(By.XPATH,"//a[text()='Ver corrección']").click()
-    repetidas = 0
+    repeats = 0
     for p in preguntas:
         q = p.find_element(By.CLASS_NAME, 'quiz').text
         q = re.sub("[0-9]{1,2}\.\s",'',q)
@@ -58,14 +58,14 @@ def extractAnswers():
             # print(f'Added "{q}"')
             solved.append({'question':q, 'img': img, 'options':opts, 'solution':a})
         else:
-            repetidas += 1
+            repeats += 1
             print(' Skip ',end='')
 
-    if repetidas == 30: allRepeated += 1
+    if repeats == 30: allRepeated += 1
 
 x = 0
-while(True):
-    print('Iteración',x)
+while(x < 50):
+    print('Iteration',x)
     fillTest()
     with open(file,'w', encoding='utf-8') as outfile:
         json_string = json.dumps(solved, indent=4, ensure_ascii=False)
