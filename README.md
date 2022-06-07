@@ -9,7 +9,7 @@ You will need to check your installed [Chrome browser version](chrome://settings
 </center>
 
 This will extract all questions with images and solutions into a JSON format.
-```json
+```
 [
   {
     "question": " ... ",
