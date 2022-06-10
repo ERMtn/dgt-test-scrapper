@@ -10,20 +10,24 @@ You will need to check your installed [Chrome browser version](chrome://settings
 
 This will extract all questions with images and solutions into a JSON format.
 ```
-[
-  {
-    "question": " ... ",
-    "img": "https://... ",
-    "options": [
-      "A) ... ",
-      "B) ... ",
-      "C) ... ",
-          ...
-    ],
-    "solution": "B) ... "
-  },
-  { ... }
-]
+{
+    data: [
+        {
+            "cod": " ... ",
+            "answers": [
+                " ... ",
+                " ... ",
+                " ... ",
+                  ...
+            ],
+            "question": " ... ",
+            "correct": 0,
+            "img": " ... ",
+            "legal": " ... "
+        },
+        { ... }
+    ]
+}
 ```
 
 
