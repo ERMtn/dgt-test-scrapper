@@ -36,20 +36,21 @@ def extract(num):
     pregs = driver.find_elements(By.XPATH,"//article[contains(@class, 'test')]")
     for i, preg in enumerate(pregs):
         code = f'Revista{num}_{i}'
-        try:
-            img_name = f'{code}.png'
-            img_data = preg.find_element(By.TAG_NAME,'img').screenshot_as_png
-        except:
-            img_name = ''
-            img_data = ''
+
         q = preg.find_element(By.CLASS_NAME,'tit_not').text[3:].strip()
-        content = preg.find_element(By.CLASS_NAME,'content_test')
-        answers = [op.text[2:].strip() for op in content.find_elements(By.TAG_NAME,"li")]
-        sol = content.find_element(By.CLASS_NAME,"content_respuesta").find_element(By.CLASS_NAME,'opcion').get_attribute('innerHTML').lower()
-        trans_table = sol.maketrans("abcdefg","0123456")
-        correct = sol.translate(trans_table)
-        # print(json.dumps({'cod': code, 'answers': answers, 'question': q, 'correct': int(correct), 'img': img, 'legal': ''}, indent=4, ensure_ascii=False))
         if not any([True for elem in solved if q in elem.values()]):
+            try:
+                img_name = f'{code}.png'
+                img_data = preg.find_element(By.TAG_NAME, 'img').screenshot_as_png
+            except:
+                img_name = ''
+                img_data = ''
+            content = preg.find_element(By.CLASS_NAME,'content_test')
+            answers = [op.text[2:].strip() for op in content.find_elements(By.TAG_NAME,"li")]
+            sol = content.find_element(By.CLASS_NAME,"content_respuesta").find_element(By.CLASS_NAME,'opcion').get_attribute('innerHTML').lower()
+            trans_table = sol.maketrans("abcdefg","0123456")
+            correct = sol.translate(trans_table)
+            # print(json.dumps({'cod': code, 'answers': answers, 'question': q, 'correct': int(correct), 'img': img, 'legal': ''}, indent=4, ensure_ascii=False))
             if img_data != '': downloadPicture(img_name, img_data)
             solved.append({'cod': code, 'answers': answers, 'question': q, 'correct': int(correct), 'img': img_name, 'legal': ''})
 

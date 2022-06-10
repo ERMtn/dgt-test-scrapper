@@ -50,18 +50,19 @@ def extract(tipo):
             driver.execute_script('renderizarRespuestasCorregidas()')
             driver.execute_script('actualizarIndicePreguntas()')
             q = driver.find_element(By.ID,'textoPreguntaElem').text
-            try:
-                img = driver.find_element(By.XPATH, "//img[@id='imgPreguntaElem' and not(contains(@src,'ImagenBlanca'))]")
-                img_name = f"DGT_Sedeapl_{img.get_attribute('src').split('/')[-1]}"
-            except:
-                img_name = ''
-                img_data = ''
-            answers = [op.text for op in driver.find_elements(By.XPATH, "//span[@class = 'arial16negro' and text() != '']")]
-            a = driver.find_element(By.XPATH,"//tr/td/img[contains(@src,'correcta')]/ancestor::node()[2]//span").text
-            correct = answers.index(a)
-            # print(f"Pregunta: {q}\nImagen: {img_name}\nOpciones: {answers}\nSolución: {correct}\n")
-
             if not any([True for elem in solved if q in elem.values()]):
+                try:
+                    img = driver.find_element(By.XPATH, "//img[@id='imgPreguntaElem' and not(contains(@src,'ImagenBlanca'))]")
+                    img_name = f"DGT_Sedeapl_{img.get_attribute('src').split('/')[-1]}"
+                except:
+                    img_name = ''
+                    img_data = ''
+                answers = [op.text for op in driver.find_elements(By.XPATH, "//span[@class = 'arial16negro' and text() != '']")]
+                a = driver.find_element(By.XPATH,"//tr/td/img[contains(@src,'correcta')]/ancestor::node()[2]//span").text
+                correct = answers.index(a)
+                # print(f"Pregunta: {q}\nImagen: {img_name}\nOpciones: {answers}\nSolución: {correct}\n")
+
+
                 if img_name != '':
                     img_data = img.screenshot_as_png
                     downloadPicture(img_name, img_data)
