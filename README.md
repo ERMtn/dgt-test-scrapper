@@ -36,6 +36,7 @@ This will extract all questions with images and solutions into a JSON format.
 ## Supported sites
 - [sedeapl.dgt.gob.es](https://sedeapl.dgt.gob.es/WEB_EXAM_AUTO/service/TiposExamenesServlet#)
 - [vialtest.com](https://vialtest.com/dgt-examenes/)
+- [revista.dgt.es](https://revista.dgt.es/es/test/)
 ---
 ## Other test sources
-- [revista-dgt.es](https://revista.dgt.es/es/test/)
+- [todotest.com](https://www.todotest.com)
