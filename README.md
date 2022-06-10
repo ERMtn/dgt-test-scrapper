@@ -2,7 +2,7 @@
 [![Selenium](https://img.shields.io/badge/Selenium-4.2.0-blue)](https://selenium-python.readthedocs.io/)
 
 # DGT test scrapper
-You will need to check your installed [Chrome browser version](chrome://settings/help) then download the appropriate *chromedriver* version. This was tested with Chrome v102.
+You will need to check your installed Chrome browser version (chrome://settings/help) then download the appropriate *chromedriver* version. This was tested with Chrome v102.0.5005.115.
 <center>
 
 [![Chromedriver](https://img.shields.io/badge/Chromedriver-%3E%3D%20102-lightgrey)](https://chromedriver.chromium.org/downloads/)
@@ -29,6 +29,9 @@ This will extract all questions with images and solutions into a JSON format.
     ]
 }
 ```
+The extracted questions can be found in the folder **json** and the related images are saved to **imgs**.
+
+**Caution** If you execute all scripts the **imgs** folder will have **A TON** of images.
 
 
 
