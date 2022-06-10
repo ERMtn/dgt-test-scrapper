@@ -2,6 +2,9 @@
 [![Selenium](https://img.shields.io/badge/Selenium-4.2.0-blue)](https://selenium-python.readthedocs.io/)
 
 # DGT test scrapper
+Some Python scripts to extract driving license tests questions from official DGT (Dirección General de Tráfico) sources and other webs. THey will retrieve the question, choices, correct answer and image from the sources.
+
+# Requirements and information
 You will need to check your installed Chrome browser version (chrome://settings/help) then download the appropriate *chromedriver* version. This was tested with Chrome v102.0.5005.115.
 <center>
 
